@@ -1,19 +1,15 @@
 import './App.css';
-import React from 'react';
-import MyComponent from './MyComponent';
-import Counter from './Counter';
-import Say from './Say';
-import EventPractice from './EventPractice';
+import React, { Component } from 'react';
+import IterationSample from './IterationSample';
 
-const App = () => {
-  return (
-    <>
-      {/* <MyComponent name="test">Hello</MyComponent> */}
-      {/* <Counter /> */}
-      {/* <Say /> */}
-      <EventPractice />
-    </>
-  );
-};
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <IterationSample />
+      </div>
+    );
+  }
+}
 
 export default App;
