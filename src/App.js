@@ -1,10 +1,10 @@
 import React from 'react';
-import Info from './hook/Info';
+import Average from './hook/Average';
 
 const App = () => {
   return (
     <div>
-      <Info />
+      <Average />
     </div>
   );
 };
