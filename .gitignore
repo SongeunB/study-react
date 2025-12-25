@@ -1,0 +1,6 @@
+# 모든 프로젝트 공통
+.DS_Store
+*.log
+
+# 특정 폴더 전체 제외
+/learning_react/
