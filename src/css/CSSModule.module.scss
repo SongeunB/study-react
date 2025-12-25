@@ -3,6 +3,12 @@
     padding: 1rem;
     color: white;
     font-size: 2rem;
+  &.inverted {
+    // inverted 가 .wrapper 와 함께 사용 됐을 때만 적용
+    color: black;
+    background: white;
+    border: 1px solid black;
+  }
 }
 
 .inverted {
