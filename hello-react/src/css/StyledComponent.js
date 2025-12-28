@@ -28,7 +28,7 @@ const Box = styled.div`
 `;
 
 const Button = styled.button`
-  background: white;
+  background: white;f
   color: black;
   border-radius: 4px;
   padding: 0.5rem;
