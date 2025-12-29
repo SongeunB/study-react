@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import NewsList from './components/NewsList';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import NewsPage from './pages/NewsPage';
 
 const App = () => {
   return (
-    <div>
-      <NewsList />
-    </div>
+    <Routes>
+      <Route path="/:category?" element={<NewsPage />} />
+    </Routes>
   );
 };
 

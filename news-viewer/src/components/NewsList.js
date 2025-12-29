@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
+import axios from 'axios';
+import usePromise from '../lib/usePromise';
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
@@ -15,27 +17,31 @@ const NewsListBlock = styled.div`
   }
 `;
 
-const sampleArticles = [
-  {
-    title: 'Sample News Title 1',
-    description: 'This is a sample description for news article 1.',
-    url: 'https://example.com/news1',
-    urlToImage: 'https://placehold.co/160',
-    publishedAt: '2024-06-01T12:00:00Z',
-  },
-  {
-    title: 'Sample News Title 2',
-    description: 'This is a sample description for news article 2.',
-    url: 'https://example.com/news2',
-    urlToImage: 'https://placehold.co/160',
-    publishedAt: '2024-06-02T15:30:00Z',
-  },
-];
+const NewsList = ({ category }) => {
+  const [loading, response, error] = usePromise(() => {
+    const queryCategory = category === 'all' ? '' : `&category=${category}`;
+    return axios.get(
+      `https://newsapi.org/v2/top-headlines?country=us${queryCategory}&apiKey=8cf91017ca74455799b5bbbe868ea34c`,
+    );
+  }, [category]);
 
-const NewsList = () => {
+  if (loading) {
+    return <NewsListBlock>Loading...</NewsListBlock>;
+  }
+
+  if (error) {
+    return <NewsListBlock>Error occurred!</NewsListBlock>;
+  }
+
+  if (!response) {
+    return null;
+  }
+
+  const { articles } = response.data;
+
   return (
     <NewsListBlock>
-      {sampleArticles.map((article) => (
+      {articles.map((article) => (
         <NewsItem key={article.url} article={article} />
       ))}
     </NewsListBlock>
